@@ -17,7 +17,7 @@ if (!$db_selected) {
 
 // database connection
 
-$result = mysql_query('SELECT * FROM look_orders where Date between');
+$result = mysql_query('SELECT * FROM look_orders where order_date between '2019-01-01' and '2019-01-30'');
 if (!$result) {
     die('Invalid query: ' . mysql_error());
 }
