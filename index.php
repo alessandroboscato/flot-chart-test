@@ -23,7 +23,9 @@ if (isset($_GET['status'])) {
 // database connection
 require('mysql_connection.php');
 
-
+while ($row = mysql_fetch_assoc($result)) {
+    echo $row["id"];
+}
 
 ?>
 
