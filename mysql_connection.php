@@ -16,6 +16,8 @@ if (!$db_selected) {
 
 
 // database connection
+$query ='select * from look_orders where order_date like "'.$key.'%"';
+ $query = "SELECT * FROM justshawarma_nexo_commandes where REF_CLIENT = '$uuc' and DATE_CREATION BETWEEN '".$between['date_from']."' AND '".$between['date_to']."';
 
 $result = mysql_query('SELECT * FROM look_orders where order_date between '2019-01-01' and '2019-01-30'');
 if (!$result) {
