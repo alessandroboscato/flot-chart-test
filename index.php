@@ -41,17 +41,15 @@ var_dump($arr);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Report look</title>
 </head>
 <body>
 
-  <form align="left" method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <label><font size="4"><strong>Job Status: </strong></font></label></br>
-    <input type="radio" name="status" value="r"
-    <?php if (isset($_GET['status']) && $_GET['status'] == "r") echo 'checked="checked"';?>>Released
-    <input type="radio" name="status" value="c"
-    <?php if (isset($_GET['status']) && $_GET['status'] == "c") echo 'checked="checked"';?>>Complete</br></br>
-    <input class="btn btn-outline-primary" type="submit" name="submit" value="Submit">
+  <form method="post" action="mysql_connection.php">
+    <label for="startdate"><strong>Select date: </strong></label></br>
+    From<input id="startdate" type="date" name="startdate" value="">
+    To<input id="enddate" for="enddate" type="date" name="enddate" value=""></br></br>
+    <input type="submit" name="submit" value="Submit">
   </form>
 
 
