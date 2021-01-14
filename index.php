@@ -23,9 +23,14 @@ if (isset($_GET['status'])) {
 // database connection
 require('mysql_connection.php');
 
+$arr = [];
+
 while ($row = mysql_fetch_assoc($result)) {
     echo $row["id"];
+    $arr = $result;
 }
+
+var_dump($arr);
 
 ?>
 
