@@ -17,7 +17,7 @@ if (isset($_GET['status'])) {
 	$status = 'r';
 }
 
-// database connection and query
+// database connection
 
 $startdate = $_GET["startdate"];
 $enddate = $_GET["enddate"];
@@ -34,7 +34,7 @@ if (!$db_selected) {
     die ('Can\'t use foo : ' . mysql_error());
 }
 
-// // database connection
+// query
 
 $query = 'select * from look_orders
  where substring(order_date, 1, 7) between "'.$startdate.'" and "'.$enddate.'";';
@@ -42,6 +42,11 @@ $result = mysql_query($query);
 if (!$result) {
     die('Invalid query: ' . mysql_error());
 }
+
+// collect data by month date
+$num_rows = mysql_num_rows($result);
+var_dump($num_rows);
+
 
 
 if(isset($_GET["startdate"]) && isset($_GET["enddate"]))
