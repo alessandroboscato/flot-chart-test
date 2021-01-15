@@ -5,12 +5,14 @@ $(document).ready(function(){
   console.log(time);
 
 
+
+
 // $.plot(placeholder, data, options);
-monthNames: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-$.plot($("#placeholder"), [ [["jan", 0], ["feb", 1]], [["jan", 1], ["feb", 10]] ], {
-    xaxes: [ { mode: "time" } ],
-    yaxes: [ { }, { } ]
+$.plot($("#placeholder"), [ [["Jan", 0], ["Feb", 1]], [["Jan", 1], ["Feb", 10]] ], {
+  xaxis: { ticks: [[1, "Jan"], [2, "Feb"], [3, "Mar"], [4, "Apr"], [5, "May"], [6, "Jun"], [7, "Jul"], [8, "Aug"], [9, "Sep"], [10, "Oct"], [11, "Nov"], [12, "Dec"]] }
 } );
+
+
 
 
 
