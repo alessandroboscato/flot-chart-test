@@ -1,6 +1,9 @@
 <?php
 
-var_dump($_POST);
+$startdate = $_GET["startdate"];
+$enddate = $_GET["enddate"];
+echo $startdate;
+echo $enddate;
 
 $con = mysql_connect("localhost","root","root");
 if (!$con)
@@ -15,17 +18,21 @@ if (!$db_selected) {
 }
 
 
-// database connection
-$query ='select * from look_orders where order_date like "'.$key.'%"';
- $query = "SELECT * FROM justshawarma_nexo_commandes where REF_CLIENT = '$uuc' and DATE_CREATION BETWEEN '".$between['date_from']."' AND '".$between['date_to']."';
+// // database connection
+// $query ='select * from look_orders where order_date like "'.$key.'%"';
+//  $query = "SELECT * FROM justshawarma_nexo_commandes where REF_CLIENT = '$uuc' and DATE_CREATION BETWEEN '".$between['date_from']."' AND '".$between['date_to']."';
 
-$result = mysql_query('SELECT * FROM look_orders where order_date between '2019-01-01' and '2019-01-30'');
+$result = mysql_query('SELECT * FROM look_orders');
 if (!$result) {
     die('Invalid query: ' . mysql_error());
 }
 
-select Date, TotalAllowance from Calculation where EmployeeId = 1
-             and Date between '2011/02/25' and '2011/02/27'
+// while($row = mysql_fetch_array($result)){
+// 	echo $row['order_date'];
+// 	echo "<br />";
+// }
+
+
 
 
 mysql_close($con);

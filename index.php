@@ -23,14 +23,7 @@ if (isset($_GET['status'])) {
 // database connection
 require('mysql_connection.php');
 
-$arr = [];
 
-while ($row = mysql_fetch_assoc($result)) {
-    echo $row["id"];
-    $arr = $result;
-}
-
-var_dump($arr);
 
 ?>
 
@@ -45,7 +38,7 @@ var_dump($arr);
 </head>
 <body>
 
-  <form method="post" action="mysql_connection.php">
+  <form method="get" action="mysql_connection.php">
     <label for="startdate"><strong>Select date: </strong></label></br>
     From<input id="startdate" type="date" name="startdate" value="">
     To<input id="enddate" for="enddate" type="date" name="enddate" value=""></br></br>
