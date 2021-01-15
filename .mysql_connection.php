@@ -17,21 +17,20 @@ if (!$db_selected) {
     die ('Can\'t use foo : ' . mysql_error());
 }
 
-
 // // database connection
-// $query ='select * from look_orders where order_date like "'.$key.'%"';
-//  $query = "SELECT * FROM justshawarma_nexo_commandes where REF_CLIENT = '$uuc' and DATE_CREATION BETWEEN '".$between['date_from']."' AND '".$between['date_to']."';
 
-$result = mysql_query('SELECT * FROM look_orders');
+$query = 'select * from look_orders
+ where substring(order_date, 1, 7) between "'.$startdate.'" and "'.$enddate.'";';
+$result = mysql_query($query);
 if (!$result) {
     die('Invalid query: ' . mysql_error());
 }
 
-// while($row = mysql_fetch_array($result)){
-// 	echo $row['order_date'];
-// 	echo "<br />";
-// }
 
+while($row = mysql_fetch_array($result)){
+  echo $row['order_id'];
+	echo "<br />";
+}
 
 
 

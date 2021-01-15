@@ -1,12 +1,9 @@
 <?php
-// This report retrieves all released / completed records from the tacojobs table.
 
 // Number of records to display per page:
 $items_per_page = 25;
-
 $page_title = 'PHP Production Jobs';
 $report_title = 'Jobs Completed / Released for Production';
-
 
 // Set the status of your report.
 if (isset($_GET['status'])) {
@@ -20,13 +17,49 @@ if (isset($_GET['status'])) {
 	$status = 'r';
 }
 
-// database connection
-require('mysql_connection.php');
+// database connection and query
+
+$startdate = $_GET["startdate"];
+$enddate = $_GET["enddate"];
+
+$con = mysql_connect("localhost","root","root");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+echo 'Connected successfully';
+
+$db_selected = mysql_select_db('carrera', $con);
+if (!$db_selected) {
+    die ('Can\'t use foo : ' . mysql_error());
+}
+
+// // database connection
+
+$query = 'select * from look_orders
+ where substring(order_date, 1, 7) between "'.$startdate.'" and "'.$enddate.'";';
+$result = mysql_query($query);
+if (!$result) {
+    die('Invalid query: ' . mysql_error());
+}
 
 
+if(isset($_GET["startdate"]) && isset($_GET["enddate"]))
+{
+    // print table
+          echo "<table>"; // start a table tag in the HTML
+          $result = mysql_query($query);
+          while ($row = mysql_fetch_assoc($result))
+          {
+          echo "<tr><td>" . $row['order_id'] . "</td><td>" . $row['order_date'] . "</td></tr>";
+          }
+          echo "</table>";
+}
+
+
+mysql_close($con);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +71,7 @@ require('mysql_connection.php');
 </head>
 <body>
 
-  <form method="get" action="mysql_connection.php">
+  <form align="left" method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <label for="startdate"><strong>Select date: </strong></label></br>
     From<input id="startdate" type="date" name="startdate" value="">
     To<input id="enddate" for="enddate" type="date" name="enddate" value=""></br></br>
